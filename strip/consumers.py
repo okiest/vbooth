@@ -23,9 +23,7 @@ class FahkeekConsumer(AsyncConsumer):
         new_strip.save()
 
     async def websocket_receive(self, event):
-        print("received message from websocket.")
         await self.save_photo(event)
-        print("skipping function like an asshole.")
         event_text = event.get('text', None)
         if event_text is not None:
             loaded_data = json.loads(event_text)
@@ -41,13 +39,11 @@ class FahkeekConsumer(AsyncConsumer):
         print("saving photo...")
         event_text = event.get('text', None)
         if event_text is not None:
-            print("event text is working")
             loaded_data = json.loads(event_text)
             data = loaded_data.get('imgBase64')
             format, imgstr = data.split(';base64,')  # format ~= data:image/X,
             ext = format.split('/')[-1]  # guess file extension
             data = ContentFile(base64.b64decode(imgstr), name='temp.' + ext)
-            print("data: ", data) 
         new_photo =  Photo(
             photo_strip = new_strip,
             strip_image = data
