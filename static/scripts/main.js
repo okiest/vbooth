@@ -7,6 +7,7 @@ canvas.width = 480;
 canvas.height = 360;
 const button = document.querySelector('button');
 var timeleft = 5;
+var numPhotos = 4;
 
 //Socket Stuff
 console.log(window.location)
@@ -81,14 +82,22 @@ function snapPhoto() {
 }
 
 function timer() {
-    var photoTimer = setInterval(function(){
-      document.getElementById("countdown").innerHTML = "Next photo in " + timeleft;
-      timeleft -= 1;
-      if(timeleft <= -1){
-        clearInterval(photoTimer);
+    console.log("numPhotos", numPhotos);
+    if (numPhotos > 0) {
+        numPhotos -= 1
+        photoTimer(() => timer())
+    }
+}
+
+function photoTimer() {
+    document.getElementById("countdown").innerHTML = "Next photo in " + timeleft;
+    timeleft -= 1;
+    if(timeleft <= -1){
         document.getElementById("countdown").innerHTML = ""
         snapPhoto();
         timeleft = 5;
-      }
-    }, 1000);
+        timer()
+    } else {
+        var countAgain = setTimeout(function(){ photoTimer()}, 1000)
+    }
 }
