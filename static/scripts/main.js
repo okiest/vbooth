@@ -21,6 +21,11 @@ var socket = new ReconnectingWebSocket(endpoint);
 
 socket.onmessage = function(event){
     console.log("message", event)
+    var msg = JSON.parse(event.data)
+    if ("newURL" in msg){
+        var myRedirect = msg["newURL"]
+        window.location = myRedirect
+    }
 }
 
 socket.onopen = function(e){
@@ -86,6 +91,8 @@ function timer() {
     if (numPhotos > 0) {
         numPhotos -= 1
         photoTimer(() => timer())
+    } else {
+        stripComplete();
     }
 }
 
@@ -100,4 +107,13 @@ function photoTimer() {
     } else {
         var countAgain = setTimeout(function(){ photoTimer()}, 1000)
     }
+}
+
+
+function stripComplete() {
+    var stripDone= true;
+    var postDetails = {
+        'strip_done': stripDone,
+    };
+    socket.send(JSON.stringify(postDetails))
 }
