@@ -1,10 +1,12 @@
 import asyncio
 import json
 import base64
+from django.utils import timezone
 from django.contrib.auth import get_user_model
+from django.shortcuts import redirect
+from django.http import HttpResponseRedirect
 from channels.consumer import AsyncConsumer
 from channels.db import database_sync_to_async
-from django.utils import timezone
 
 from django.core.files.base import ContentFile
 
@@ -22,12 +24,32 @@ class FahkeekConsumer(AsyncConsumer):
         new_strip = PhotoStrip(strip_date=timezone.now())
         new_strip.save()
 
+
     async def websocket_receive(self, event):
-        await self.save_photo(event)
+        finished = False
         event_text = event.get('text', None)
         if event_text is not None:
             loaded_data = json.loads(event_text)
-            loaded_img = loaded_data.get('imgBase64')
+            try:
+                loaded_img = loaded_data.get('imgBase64')
+                await self.save_photo(event)
+            except:
+                finished = False
+            try:
+                finished = loaded_data.get('strip_done')
+            except:
+                finished = False
+            print("Finished: ", finished)
+            if finished is True:
+                new_url = "/view/" + new_strip.strip_code
+                myRedirect = {
+                    'newURL': new_url,
+                }
+                print("sending redirect")
+                await self.send({
+                    "type": "websocket.send",
+                    "text": json.dumps(myRedirect), 
+                })
         
 
     async def websocket_disconnect(self, event):
