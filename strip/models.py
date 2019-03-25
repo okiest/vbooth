@@ -9,10 +9,13 @@ from django.conf import settings
 class PhotoStrip(models.Model):
     strip_date = models.DateTimeField(auto_now_add=True)
     strip_code = models.CharField(blank=True, null=True, max_length=6, unique=True)
+    strip_half = models.ImageField(upload_to='half/', blank=True, null=True)
+    strip_whole = models.ImageField(upload_to='whole/', blank=True, null=True)
 
     def __str__(self):
         return str(self.strip_code)
 
+    ### Attempt 3 times to come up with a unique 6 character code ###
     def save(self, *arg, **kwargs):
         if not self.strip_code:
             self.strip_code = str(uuid.uuid4().hex[:6].upper())
