@@ -1,6 +1,7 @@
 import asyncio
 import json
 import base64
+from PIL import Image
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 from django.shortcuts import redirect
@@ -42,6 +43,14 @@ class FahkeekConsumer(AsyncConsumer):
             print("Finished: ", finished)
             if finished is True:
                 new_url = "/view/" + new_strip.strip_code
+                photos = Photo.objects.filter(photo_strip=new_strip)
+                im = Image.open(photos[0].strip_image.path) 
+                width, height = im.size
+                if width > height:
+                    new_strip.orientation = 'H'
+                    new_strip.save()
+                else:
+                    pass
                 myRedirect = {
                     'newURL': new_url,
                 }
