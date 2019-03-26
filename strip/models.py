@@ -7,10 +7,15 @@ from django.conf import settings
 
 
 class PhotoStrip(models.Model):
+    ORIENTATION_CHOICES = (
+        ('V', 'Vertical'),
+        ('H', 'Horizontal'),
+    )
     strip_date = models.DateTimeField(auto_now_add=True)
     strip_code = models.CharField(blank=True, null=True, max_length=6, unique=True)
     strip_half = models.ImageField(upload_to='half/', blank=True, null=True)
     strip_whole = models.ImageField(upload_to='whole/', blank=True, null=True)
+    orientation = models.CharField(max_length=1, choices=ORIENTATION_CHOICES, default='V')
 
     def __str__(self):
         return str(self.strip_code)
