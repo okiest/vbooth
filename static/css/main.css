@@ -1,0 +1,25 @@
+  .grid {
+    display: grid;
+    grid-template-columns: 100px repeat(4, 1fr) 100px;
+    grid-gap: 2em;
+    row-gap: 1em;
+}
+  .bio-image {
+    grid-column: 1/2;
+    object-fit: cover;
+    width: 1fr;
+    height: 20vh;
+}
+@media (min-width: 801px) {
+  .bio-image {
+    grid-column: 1/2;
+    object-fit: cover;
+    width: 1fr;
+    height: 20vh;
+  }
+}
+
+video {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
