@@ -18,6 +18,7 @@ if (loc.protocol == 'https:'){
 }
 var endpoint = wsStart + loc.host + loc.pathname
 var socket = new ReconnectingWebSocket(endpoint);
+var newStrip = true;
 
 socket.onmessage = function(event){
     console.log("message", event)
@@ -32,6 +33,9 @@ socket.onopen = function(e){
     console.log("open", e)
     $('.server-status').css({ 'color': 'green', });
     button.onclick = function() {
+        if (newStrip === true) {
+            createStrip();
+        }
         timer();
     };
     const constraints = {
@@ -70,11 +74,14 @@ function sendPhoto(dataURL) {
     socket.send(JSON.stringify(postDetails))
 }
 
-function newStrip() {
-    var newStrip = true;
+function createStrip() {
+    console.log("Creating new strip.")
+    console.log(newStrip)
     var postDetails = {
         'new_strip': newStrip,
     };
+    newStrip = false;
+    console.log(newStrip)
     socket.send(JSON.stringify(postDetails))
 }
 
