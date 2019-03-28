@@ -14,6 +14,7 @@ from django.core.files.base import ContentFile
 from strip.models import *
 
 demo_strip = PhotoStrip.objects.get(pk=1)
+global new_strip
 
 class FahkeekConsumer(AsyncConsumer):
     async def websocket_connect(self, event):
@@ -31,6 +32,11 @@ class FahkeekConsumer(AsyncConsumer):
         event_text = event.get('text', None)
         if event_text is not None:
             loaded_data = json.loads(event_text)
+            try:
+                create_new = loaded_data.get('new_strip')
+                await self.new_strip(event)
+            except:
+                finished = False
             try:
                 loaded_img = loaded_data.get('imgBase64')
                 await self.save_photo(event)
@@ -81,3 +87,14 @@ class FahkeekConsumer(AsyncConsumer):
         )
         new_photo.save()
         return new_photo
+    
+    async def new_strip(self, event, *args, **kwargs):
+        event_text = event.get('text', None)
+        if event_text is not None:
+            loaded_data = json.loads(event_text)
+            data = loaded_data.get('new_strip')
+            if new_strip is True:
+                print("Creating new strip.") 
+                new_strip = PhotoStrip(strip_date=timezone.now())
+                new_strip.save()
+                
