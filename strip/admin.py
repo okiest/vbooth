@@ -27,6 +27,7 @@ class PhotoInline(admin.TabularInline):
 
 class PhotoStripAdmin(admin.ModelAdmin):
     search_fields = ('strip_code',)
+    list_display = ('strip_code', 'strip_date',)
     list_filter = (PhotoStripFilter,)
     inlines = [
         PhotoInline,
