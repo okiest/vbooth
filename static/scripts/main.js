@@ -19,7 +19,16 @@ if (loc.protocol == 'https:'){
 var endpoint = wsStart + loc.host + loc.pathname
 var socket = new ReconnectingWebSocket(endpoint);
 var newStrip = true;
+var flash = document.getElementById("flash");
 
+
+const constraints = {
+  audio: false,
+  video: {
+      width: { min: 1024, ideal: 1280, max: 1920 },
+      height: { min: 576, ideal: 720, max: 1080 },
+  }
+};
 socket.onmessage = function(event){
     console.log("message", event)
     var msg = JSON.parse(event.data)
@@ -32,30 +41,7 @@ socket.onmessage = function(event){
 socket.onopen = function(e){
     console.log("open", e)
     $('.server-status').css({ 'color': 'green', });
-    button.onclick = function() {
-        if (newStrip === true) {
-            createStrip();
-        }
-        timer();
-    };
-    const constraints = {
-      audio: false,
-      video: {
-          width: { min: 1024, ideal: 1280, max: 1920 },
-          height: { min: 576, ideal: 720, max: 1080 },
-      }
-    };
     
-    function handleSuccess(stream) {
-      window.stream = stream; // make stream available to browser console
-      video.srcObject = stream;
-    }
-    
-    function handleError(error) {
-      console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
-    }
-    
-    navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
 }
 
 socket.onerror = function(e){
@@ -65,6 +51,44 @@ socket.onerror = function(e){
 socket.onclose = function(e){
     console.log("close", e)
     $('.server-status').css({ 'color': 'red', });
+}
+
+function flasher(){
+  console.log("Flashy flashy!")
+  $(".flash").hide().fadeIn(100);
+  flash.style.opacity = "1";
+  $(".flash").fadeOut(100);
+}
+
+function handleSuccess(stream) {
+  window.stream = stream; // make stream available to browser console
+  video.srcObject = stream;
+}
+    
+function handleError(error) {
+  console.log('navigator.MediaDevices.getUserMedia error: ', error.message, error.name);
+}
+
+function startCountdown() {
+    if (newStrip === true) {
+        createStrip();
+    }
+    //if(video.requestFullscreen) {
+    //    video.requestFullscreen();
+    //}
+    document.getElementById("start").style.display= "none";
+    document.getElementsByClassName("countdown")[0].style.display= "none";
+    document.getElementsByClassName("countdown")[0].style.display= "block";
+    document.getElementById("remaining").style.display= "block";
+    timer();
+};
+
+function loadCamera(){ 
+  navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
+  document.getElementById("vid").style.width= "100%";
+  document.getElementById("start").style.display= "block";
+  document.getElementById("camerabutt").style.display= "block";
+  document.getElementById("camerabutt").style.display= "none";
 }
 
 function sendPhoto(dataURL) {
@@ -98,6 +122,7 @@ function snapPhoto() {
 
 function timer() {
     console.log("numPhotos", numPhotos);
+    document.getElementById("remaining").innerHTML = "Photos Remaining: " + numPhotos;
     if (numPhotos > 0) {
         numPhotos -= 1
         photoTimer(() => timer())
@@ -111,6 +136,7 @@ function photoTimer() {
     timeleft -= 1;
     if(timeleft <= -1){
         document.getElementById("countdown").innerHTML = ""
+        flasher(); 
         snapPhoto();
         timeleft = 5;
         timer()
