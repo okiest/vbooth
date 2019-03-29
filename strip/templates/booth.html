@@ -5,14 +5,29 @@
 
 <div class="main-grid" id="container">
 
-    <h1>Virtual Photobooth</h1>
-    <p class="server-status">Server status</p>
+    <div class="intro-info">
+      <h1>GoBooth.IO</h1>
+      <h2>The Virtual Photobooth</h2>
+      <p class="server-status">Server status</p>
+    </div>
 
-    <video class="video" playsinline autoplay></video>
-    <button>Take snapshot</button>
-    <canvas class="canvas"></canvas>
-
+    <video id="vid" video playsinline autoplay></video>
     <div class="countdown" id="countdown"></div>
+    <div class="remaining" id="remaining"></div>
+    <div class="flash" id="flash"></div>
+    <div class="color-block"></div>
+    <div class="tutorial">
+      <p>1. Press load Camera to begin.</p>
+      <p>2. Allow Camera (Usually the front facing camera for mobile devices.)</p>
+      <p>3. Click START and have fun!</p>
+      <button id="camerabutt" onClick="loadCamera()">Load Camera</button>
+    </div>
+    <button id="start" onClick="startCountdown()">Start</button>
+    <div class="example"><img src="/media/example.jpg"/></div>
+    <div class="example2"><img src="/media/example2.jpg"/></div>
+    <canvas class="canvas"></canvas>
+ 
+
 
 </div>
 
