@@ -3,17 +3,18 @@
 {% block content%}
 
 
-<div id="container">
+<div class="grid" id="grid">
 
-    <h1>{{ strip.strip_code }} </h1>
-
+    <h1 class="strip-code">{{ strip.strip_code }} </h1>
     {% for photo in photos %}
-    <img src="{{ photo.strip_image.url }}"?>
-    {% endfor %} 
-
+    <img class={% if strip.orientation == "H" %}"imv-{{ forloop.counter }}"{% elif strip.orientation == "V"%}"imh-{{ forloop.counter }}"{% endif %} src="{{ photo.strip_image.url }}"?>
+    {% endfor %}
+    <a href="/print/{{ strip.strip_code }}">
+    <button id="print-strip" class={% if strip.orientation == "H" %}"print-v"{% elif strip.orientation == "V"%}"print-h"{% endif %}>Print for FREE!</button>
+    </a>
 </div>
 
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/lobby.css' %}">
 
 {% endblock %}
