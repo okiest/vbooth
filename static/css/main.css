@@ -18,6 +18,13 @@
     height: 20vh;
   }
 }
+  .fullscreen-dummy {
+  z-index: 1;
+  grid-column: 1/5;
+  grid-row: 1;
+  width: 0%;
+  justify-self: center;
+}
 
 video {
   z-index: 1;
