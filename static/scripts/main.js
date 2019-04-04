@@ -2,6 +2,7 @@
 
 // Put variables in global scope to make them available to the browser console.
 const video = document.querySelector('video');
+//const fullscreenDummy = $(".fullscreen-dummy")
 const canvas = window.canvas = document.querySelector('canvas');
 canvas.width = 480;
 canvas.height = 360;
@@ -75,6 +76,9 @@ function startCountdown() {
     }
     //if(video.requestFullscreen) {
     //    video.requestFullscreen();
+    //}
+    //if(fullscreenDummy.requestFullscreen) {
+    //    fullscreenDummy.requestFullscreen();
     //}
     document.getElementById("start").style.display= "none";
     document.getElementsByClassName("countdown")[0].style.display= "none";
