@@ -1,9 +1,10 @@
+import datetime
 try:
     from BytesIO import BytesIO
 except ImportError:
     from io import BytesIO
 import base64
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 
 from django.core.files.uploadedfile import InMemoryUploadedFile 
 
@@ -29,6 +30,7 @@ def get_coorder(orientation):
 
 def single_stripper(strip_code, *args, **kwargs):
     n = 0
+    today = datetime.date.today()
     photo_strip = PhotoStrip.objects.get(strip_code=strip_code)
     if photo_strip.strip_half:
         return("Download version already created at " + photo_strip.strip_half.url)
@@ -50,6 +52,10 @@ def single_stripper(strip_code, *args, **kwargs):
         im.paste(single_im, positions[n])
         n = n + 1
     im_io = BytesIO()
+    font = ImageFont.truetype("BebasNeue-Regular.ttf", 64)
+    printed_date = today.strftime("%d %b %Y")
+    d = ImageDraw.Draw(im)
+    d.text((40, 3880), printed_date, fill=(0,0,0), font=font) 
     im.save(im_io, format='JPEG')
     image_file = InMemoryUploadedFile(im_io, None, 'something.jpg', 'image/jpeg', im_io.__sizeof__(), None)
     photo_strip.strip_half.save("dl-{}.jpg".format(strip_code), image_file)
@@ -70,8 +76,11 @@ def big_stripper(strip_code, *args, **kwargs):
     orientation = photo_strip.orientation
     single_strip = Image.open(half_path)
     if photo_strip.orientation == 'H':
-        pos1 = (0, 0, 1360, 4080) 
-        pos2 = (1360, 0, 2720, 4080) 
+        pos1 = (20, 0, 1380, 4080) 
+        pos2 = (1380, 0, 2740, 4080) 
+        #These are the original coordinates.  Nudge the X or Y values to calibrate your printer.
+        #pos1 = (0, 0, 1360, 4080) 
+        #pos2 = (1360, 0, 2720, 4080) 
         im = Image.open("whole.jpg")
     elif photo_strip.orientation == 'V':
         pos1 = (0,  0, 4080, 1360) 
