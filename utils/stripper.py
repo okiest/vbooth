@@ -54,7 +54,10 @@ def single_stripper(strip_code, *args, **kwargs):
     font = ImageFont.truetype("BebasNeue-Regular.ttf", 64)
     printed_date = today.strftime("%d %b %Y")
     d = ImageDraw.Draw(im)
-    d.text((40, 3880), printed_date, fill=(0,0,0), font=font) 
+    if photo_strip.orientation == 'H':
+        d.text((40, 3880), printed_date, fill=(0,0,0), font=font) 
+    elif photo_strip.orientation == 'V':
+        d.text((3200, 1200), printed_date, fill=(0,0,0), font=font) 
     im.save(im_io, format='JPEG')
     image_file = InMemoryUploadedFile(im_io, None, 'something.jpg', 'image/jpeg', im_io.__sizeof__(), None)
     photo_strip.strip_half.save("dl-{}.jpg".format(strip_code), image_file)
