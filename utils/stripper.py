@@ -47,7 +47,6 @@ def single_stripper(strip_code, *args, **kwargs):
         raise ValueError('4 photos are needed to make a strip.') 
     for photo in photos:
         single_im = Image.open(photo.strip_image.path)
-        #TODO unmirror image
         single_im = single_im.convert('RGB')
         im.paste(single_im, positions[n])
         n = n + 1
