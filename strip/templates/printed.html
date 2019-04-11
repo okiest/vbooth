@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+
+<div class="fucker" id="grid">
+  <div class="lil-fucker">
+    <img class={% if strip.orientation == "H" %}"imv"{% elif strip.orientation == "V"%}"imh"{% endif %} src="{{ strip.strip_half.url }}"/>
+    <div class={% if strip.orientation == "H" %}"print-v"{% elif strip.orientation == "V"%}"print-h"{% endif %}>
+      <h2>Print Code: </h2>
+        <div class="print-code">
+          <code>{{ strip.strip_code }}</code>
+        </div>
+    </div>
+    <div class={% if strip.orientation == "H" %}"dl-v"{% elif strip.orientation == "V"%}"dl-h"{% endif %}>
+      <p>Free print provided by:</p>
+      <p class="company"><strong>BEAUX ARTS</strong></p>
+      <address>
+      2285 Highway 101
+      Suite HI
+      Florence OR 97439
+      </address>
+      <a href="https://goo.gl/maps/4thJzSoLBk62">
+      <button id="directions" class="directions">Get Directions</button>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/lobby.css' %}">
+
+{% endblock %}
+
