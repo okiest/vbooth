@@ -1,22 +1,22 @@
-  .main-grid {
-    display: grid;
-    grid-template-columns: 1fr minmax(50vw, 1fr) 1fr 1fr;
-    grid-gap: 2em;
-    row-gap: 1em;
+.main-grid {
 }
-  .bio-image {
-    grid-column: 1/2;
-    object-fit: cover;
-    width: 1fr;
-    height: 20vh;
+  .booth {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
-@media (min-width: 801px) {
-  .bio-image {
-    grid-column: 1/2;
-    object-fit: cover;
-    width: 1fr;
-    height: 20vh;
-  }
+  #booth {
+  display: none;
+}
+h1 {
+  font-size: 42;
+}
+video {
+  z-index: -1;
+  position: absolute;
+  width: 0%;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  justify-self: center;
 }
   .fullscreen-dummy {
   z-index: 1;
@@ -26,40 +26,77 @@
   justify-self: center;
 }
 
-video {
-  z-index: 1;
-  grid-column: 1/5;
-  grid-row: 1;
-  width: 0%;
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  justify-self: center;
-}
 canvas {
   visibility: hidden;
   grid-row: 4;
   grid-column: 2/4;
 }
-  .intro-info {
-    background: grey;
-    grid-row: 1;
-    grid-column: 2/4;
+.top {
+  margin-left: 200px;
+  margin-right: 200px;
+  display: grid;
+  grid-template-areas:
+      "hero hero2 "
+      "tutorial . "
+      "tutorial cta1";
+  background: none;
+    /*
     z-index: -3;
+    */
+}
+  .hero {
+    grid-area: hero;
+    max-height: 50vh;
+    padding: 50px;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+}
+  .hero2 {
+    grid-area: hero2;
+    display: grid;
+    min-height: 400px;
+    max-height: 50vh;
+    padding: 50px;
+    background: none;
+}
+  .hero > * {
+    background: grey;
+    padding: 10px;
+}
+  .cta {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+}
+  .cta1 {
+    grid-area: cta1;
+}
+  .cta2 {
+    grid-area: cta2;
+}
+  .tutorial {
+    grid-area: tutorial;
+    z-index: 1;
 }
   .example {
-    grid-column: 2/4;
-    grid-row: 2;
+    grid-row: 1;
+    grid-column: 1;
     z-index: -1;
-    -webkit-transform: rotate(8deg) translate(50%, 0);
-            transform: rotate(8deg) translate(50%, 0);
+    -webkit-transform: rotate(8deg);
+            transform: rotate(8deg);
 }
   .example2 {
-    grid-column: 2/4;
-    grid-row: 2;
+    grid-row: 1;
+    grid-column: 1;
     z-index: -2;
-    -webkit-transform: rotate(-20deg) translate(50%, 0);
-            transform: rotate(-20deg) translate(50%, 0);
+    -webkit-transform: rotate(-20deg);
+            transform: rotate(-20deg);
 }
+/*
 @media (min-width: 801px) {
   .example {
     grid-column: 3/4;
@@ -76,11 +113,7 @@ canvas {
             transform: rotate(-20deg) translate(20%, -10%);
   }
 }
-  .tutorial {
-    grid-column: 2/4;
-    grid-row: 2;
-    z-index: 1;
-}
+*/
   .tutorial p {
    color: white; 
    font: bold 24px/45px Helvetica, Sans-Serif; 
@@ -89,22 +122,15 @@ canvas {
    background: rgba(0, 0, 0, 0.85);
    padding: 10px; 
 }
-@media (min-width: 801px) {
-  .tutorial {
-    grid-column: 2/3;
-    grid-row: 2;
-    z-index: 1;
-  }
-}
   .color-block {
     background: rgb(0, 0, 0); /* fallback color */
-    background: rgba(0, 0, 0, 0.85);
-    grid-column: 2/3;
-    grid-row: 2;
+    background: rgba(0, 0, 0, 0.50);
+    grid-column: 1/2;
+    grid-row: 1;
     z-index: -3;
 }
   #start {
-  grid-column: 1/5;
+  grid-column: -1/ span 1;
   grid-row: 1;
   align-self: end;
   justifiy-self: end;
@@ -121,10 +147,18 @@ canvas {
   #camerabutt {
   display: block;
   z-index: 5;
+  font-size: 17px;
+  display: inline-block;
+  border: none;
+  margin: 0;
+  text-decoration: none;
+  background: #0069ed;
+  color: #ffffff;
+  padding: 30px 64px;
 }
   .countdown {
-  grid-column: 3/4;
-  grid-row: 1;
+  grid-column: 1;
+  grid-row: 2;
   align-self: start;
   justifiy-self: end;
   border: none;
@@ -139,8 +173,8 @@ canvas {
   z-index: 5;
 }
   .remaining{
-  grid-column: 4/5;
-  grid-row: 1;
+  grid-column: 1;
+  grid-row: 3;
   align-self: start;
   justifiy-self: end;
   border: none;
@@ -156,14 +190,95 @@ canvas {
 }
 
 .flash{ 
-  grid-column: 1/5;
-  grid-row: 1;
   opacity: 1;
   top:0;
   left:0;
+  position: absolute;
   width:100%;
   height:100%;
   z-index: 10;
   display: none;
   background-color:#fff;
  }
+@media (max-width: 1400px) {
+  .top {
+    margin-left: 0;
+    margin-right: 0;
+    display: grid;
+    grid-template-areas:
+        "hero hero2 "
+        "tutorial . "
+        "tutorial cta1";
+    background: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .top {
+    margin-left: 0;
+    margin-right: 0;
+    display: grid;
+    grid-template-areas:
+        "hero"
+        "tutorial"
+        "hero2"
+        "cta1";
+    background: none;
+  }
+  .example {
+    top: 0;
+    grid-row: 1;
+    grid-column: 1;
+    z-index: -1;
+    max-width: 20%;
+    height: auto;
+    -webkit-transform: rotate(8deg) scale(0.7) translate(0, -400px);
+            transform: rotate(8deg) scale(0.7) translate(0, -400px);
+  }
+  .example2 {
+    top: 0;
+    grid-row: 1;
+    grid-column: 1;
+    z-index: -2;
+    -webkit-transform: rotate(-20deg) scale(0.7) translate(100px, -400px);
+            transform: rotate(-20deg) scale(0.7) translate(100px, -400px);
+  }
+  .booth {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 20vh 40vh 40vh;
+  }
+  .remaining{
+  grid-column: 1;
+  grid-row: -1;
+  align-self: start;
+  justifiy-self: end;
+  border: none;
+  color: white;
+  display: none;
+  font: bold 24px/45px Helvetica, Sans-Serif;
+  font-size: 24px;
+  letter-spacing: -1px;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.85);
+  padding: 10px;
+  z-index: 5;
+  }
+  .countdown {
+  grid-column: -1;
+  grid-row: -1;
+  align-self: start;
+  justifiy-self: end;
+  border: none;
+  color: white;
+  display: none;
+  font: bold 24px/45px Helvetica, Sans-Serif;
+  font-size: 24px;
+  letter-spacing: -1px;
+  background: rgb(0, 0, 0); /* fallback color */
+  background: rgba(0, 0, 0, 0.85);
+  padding: 10px;
+  z-index: 5;
+  }
+}
+
