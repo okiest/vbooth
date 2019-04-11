@@ -6,7 +6,7 @@ from strip.models import *
 
 urlpatterns = [
     path('', booth, name='booth'),
-    path('view/<strip_code>', view_strip, name='view-strip'),
-    path('print/<strip_code>', print_strip, name='print-strip'),
+    path('lobby/<strip_code>', lobby, name='lobby'),
+    path('printed/<strip_code>', printed_strip, name='printed-strip'),
     path('download/<strip_code>', download_strip, name='download-strip'),
 ]
