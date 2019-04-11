@@ -8,8 +8,9 @@ from django.shortcuts import redirect
 from django.http import HttpResponseRedirect
 from channels.consumer import AsyncConsumer
 from channels.db import database_sync_to_async
-
 from django.core.files.base import ContentFile
+
+from utils.stripper import *
 
 from strip.models import *
 
@@ -48,7 +49,7 @@ class FahkeekConsumer(AsyncConsumer):
                 finished = False
             print("Finished: ", finished)
             if finished is True:
-                new_url = "/view/" + new_strip.strip_code
+                new_url = "/lobby/" + new_strip.strip_code
                 photos = Photo.objects.filter(photo_strip=new_strip)
                 im = Image.open(photos[0].strip_image.path) 
                 width, height = im.size
@@ -57,6 +58,7 @@ class FahkeekConsumer(AsyncConsumer):
                     new_strip.save()
                 else:
                     pass
+                single_stripper(new_strip.strip_code)
                 myRedirect = {
                     'newURL': new_url,
                 }
