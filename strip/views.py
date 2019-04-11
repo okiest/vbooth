@@ -10,8 +10,13 @@ def booth(request):
     }
     return render(request, "booth.html", context)
 
-def view_strip(request, strip_code):
+@login_required
+def lobby(request, strip_code):
     strip = PhotoStrip.objects.get(strip_code=strip_code)
+    if strip.strip_half:
+        pass
+    else:
+        single_stripper(strip_code)
     photos = Photo.objects.filter(photo_strip=strip)
     context = {
         "strip": strip,
@@ -20,9 +25,10 @@ def view_strip(request, strip_code):
     #if "print-strip" in request.POST:
     #    print("Redirecting to print page")
     #    return redirect("print/{}".format(strip_code)) 
-    return render(request, "view_strip.html", context)
+    return render(request, "lobby.html", context)
 
-def print_strip(request, strip_code):
+@login_required
+def printed_strip(request, strip_code):
     strip = PhotoStrip.objects.get(strip_code=strip_code)
     if strip.strip_whole:
         pass
@@ -37,7 +43,7 @@ def print_strip(request, strip_code):
         "strip": strip,
         "photos": photos,
     }
-    return render(request, "print_strip.html", context)
+    return render(request, "printed.html", context)
 
 @login_required
 def download_strip(request, strip_code):
