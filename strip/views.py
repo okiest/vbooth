@@ -13,6 +13,10 @@ def booth(request):
 @login_required
 def lobby(request, strip_code):
     strip = PhotoStrip.objects.get(strip_code=strip_code)
+    if strip.strip_whole:
+        pass
+    else:
+        big_stripper(strip_code)
     if strip.strip_half:
         pass
     else:
