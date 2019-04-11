@@ -91,8 +91,10 @@ function loadCamera(){
   navigator.mediaDevices.getUserMedia(constraints).then(handleSuccess).catch(handleError);
   document.getElementById("vid").style.width= "100%";
   document.getElementById("start").style.display= "block";
+  document.getElementById("booth").style.display= "grid";
   document.getElementById("camerabutt").style.display= "block";
   document.getElementById("camerabutt").style.display= "none";
+  $(".top").hide()
 }
 
 function sendPhoto(dataURL) {
