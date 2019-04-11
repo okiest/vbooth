@@ -3,15 +3,25 @@
 {% block content%}
 
 
-<div class="grid" id="grid">
-
-    <h1 class="strip-code">{{ strip.strip_code }} </h1>
+<div class="fucker" id="grid">
+  <div class="lil-fucker">
+    <div class="strip-code">
+      <h1>Gorgeous!</h1>
+    </div>
     {% for photo in photos %}
-    <img class={% if strip.orientation == "H" %}"imv-{{ forloop.counter }}"{% elif strip.orientation == "V"%}"imh-{{ forloop.counter }}"{% endif %} src="{{ photo.strip_image.url }}"?>
+    <img class={% if strip.orientation == "H" %}"imv-{{ forloop.counter }}"{% elif strip.orientation == "V"%}"imh-{{ forloop.counter }} imh"{% endif %} src="{{ photo.strip_image.url }}"?>
     {% endfor %}
-    <a href="/print/{{ strip.strip_code }}">
-    <button id="print-strip" class={% if strip.orientation == "H" %}"print-v"{% elif strip.orientation == "V"%}"print-h"{% endif %}>Print for FREE!</button>
-    </a>
+    <div class={% if strip.orientation == "H" %}"print-v"{% elif strip.orientation == "V"%}"print-h"{% endif %}>
+      <a href="/print/{{ strip.strip_code }}">
+      <button id="print-strip" class="butt-print">Print for FREE!</button>
+      </a>
+    </div>
+    <div class={% if strip.orientation == "H" %}"dl-v"{% elif strip.orientation == "V"%}"dl-h"{% endif %}>
+      <a href="/download/{{ strip.strip_code }}">
+      <button id="dl-strip" class="butt-dl">Download and Share!</button>
+      </a>
+    </div>
+  </div>
 </div>
 
 {% load static %}
