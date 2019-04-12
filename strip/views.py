@@ -49,20 +49,3 @@ def printed_strip(request, strip_code):
     }
     return render(request, "printed.html", context)
 
-@login_required
-def download_strip(request, strip_code):
-    strip = PhotoStrip.objects.get(strip_code=strip_code)
-    if strip.strip_whole:
-        pass
-    else:
-        big_stripper(strip_code)
-    if strip.strip_half:
-        pass
-    else:
-        single_stripper(strip_code)
-    photos = Photo.objects.filter(photo_strip=strip)
-    context = {
-        "strip": strip,
-        "photos": photos,
-    }
-    return render(request, "download_strip.html", context)
