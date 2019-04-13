@@ -14,7 +14,6 @@ from utils.stripper import *
 
 from strip.models import *
 
-demo_strip = PhotoStrip.objects.get(pk=1)
 global new_strip
 
 class FahkeekConsumer(AsyncConsumer):
