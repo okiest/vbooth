@@ -5,7 +5,9 @@
 
 <div class="fucker" id="grid">
   <div class="lil-fucker">
-    <img class={% if strip.orientation == "H" %}"imv"{% elif strip.orientation == "V"%}"imh"{% endif %} src="{{ strip.strip_half.url }}"/>
+    <div class={% if strip.orientation == "H" %}"imv"{% elif strip.orientation == "V"%}"imh"{% endif %}>
+    <img  src="{{ strip.strip_half.url }}"/>
+    </div>
     <div class={% if strip.orientation == "H" %}"print-v"{% elif strip.orientation == "V"%}"print-h"{% endif %}>
       <a href="/">
       <button class="butt-retry">Try Again</button>
