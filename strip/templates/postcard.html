@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+
+<div class="main-grid">
+
+<div class="canvas-dummy">
+  <img class="img-overlay" src="/media/greetings_from.png" />
+  <canvas class="canvas"></canvas>
+</div>
+<button id="camerabutt" onClick="fullscreen()">Fullscreen</button>
+<video class="player"></video>
+<div class="strip"></div> 
+
+
+</div>
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/postcard.css' %}">
+<script src="{% static 'scripts/postcard.js' %}"></script>
+
+{% endblock %}

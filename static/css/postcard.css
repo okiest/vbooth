@@ -1,0 +1,24 @@
+.main-grid {
+  display: grid;
+}
+
+.player {
+  display: none;
+}
+.canvas {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+  z-index: 3;
+}
+.canvas-dummy {
+  display: grid;
+  grid-template-rows: 50vh 50vh;
+  grid-template-columns: 100vw;
+}
+.img-overlay {
+  z-index: 4;
+  max-width:100%;
+  height:auto;
+}
