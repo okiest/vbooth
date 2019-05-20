@@ -49,3 +49,8 @@ def printed_strip(request, strip_code):
     }
     return render(request, "printed.html", context)
 
+def postcard(request):
+    context = {
+    }
+    return render(request, "postcard.html", context)
+    

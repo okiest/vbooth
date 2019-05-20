@@ -8,4 +8,5 @@ urlpatterns = [
     path('', booth, name='booth'),
     path('lobby/<strip_code>', lobby, name='lobby'),
     path('printed/<strip_code>', printed_strip, name='printed-strip'),
+    path('postcard/', postcard, name='postcard'),
 ]
