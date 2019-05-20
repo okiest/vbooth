@@ -15,10 +15,59 @@
 .canvas-dummy {
   display: grid;
   grid-template-rows: 50vh 50vh;
-  grid-template-columns: 100vw;
+  grid-template-columns: 1fr 1fr 1fr;
 }
-.img-overlay {
+.center-butts {
   z-index: 4;
+  padding: 60px;
+  grid-row: 2/3;
+  grid-column: 2/3;
+  align-self: end;
+  justify-self: center;
+}
+.start-butt {
   max-width:100%;
   height:auto;
+  color: red;
+  font-size: 64px;
+}
+.hud {
+  z-index: 4;
+  padding: 20px;
+  grid-row: 1/2;
+  grid-column: 3/4;
+  align-self: center;
+  justify-self: end;
+}
+.remaining {
+  color: red;
+  font-size: 64px;
+}
+.countdown{
+  color: red;
+  font-size: 64px;
+}
+.left-butts {
+  z-index: 4;
+  padding: 20px;
+  grid-row: 2/3;
+  grid-column: 1/2;
+  align-self: center;
+  justify-self: start;
+}
+.right-butts {
+  z-index: 4;
+  padding: 20px;
+  grid-row: 2/3;
+  grid-column: 3/4;
+  align-self: center;
+  justify-self: end;
+}
+.left-pointer {
+  color: red;
+  font-size: 64px;
+}
+.right-pointer {
+  color: red;
+  font-size: 64px;
 }
