@@ -7,6 +7,9 @@
 
 <div class="canvas-dummy">
   <!--<img class="img-overlay" src="/media/greetings_from.png" />-->
+  <div class="top-left">
+    <div class="exit-butt">X</div>
+  </div>
   <div class="hud">
   <div class="remaining">1</div>
   <div class="countdown">5</div>
@@ -15,14 +18,14 @@
   <div class="left-pointer"><</div>
   </div>
   <div class="center-butts">
-  <div class="start-butt"> Fuck</div>
+  <button id="fullscreen" onClick="fullscreen()" class="start-butt">Fuck</button>
   </div>
   <div class="right-butts">
   <div class="right-pointer">></div>
   </div>
   <canvas class="canvas"></canvas>
 </div>
-<button id="camerabutt" onClick="fullscreen()">Fullscreen</button>
+<button id="camerabutt" onClick="startCamera()">Start</button>
 <video class="player"></video>
 <div class="strip"></div> 
 
