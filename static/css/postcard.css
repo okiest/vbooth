@@ -17,6 +17,18 @@
   grid-template-rows: 50vh 50vh;
   grid-template-columns: 1fr 1fr 1fr;
 }
+.top-left {
+  grid-row: 1/2;
+  grid-column: 1/2;
+  padding: 20px;
+  z-index: 4;
+  align-self: start;
+  justify-self: start;
+}
+.exit-butt {
+  color: red;
+  font-size: 64px;
+}
 .center-butts {
   z-index: 4;
   padding: 60px;
@@ -26,8 +38,6 @@
   justify-self: center;
 }
 .start-butt {
-  max-width:100%;
-  height:auto;
   color: red;
   font-size: 64px;
 }
@@ -71,3 +81,34 @@
   color: red;
   font-size: 64px;
 }
+@media (max-width: 800px ) {
+  .left-pointer {
+    color: green;
+    font-size: 32px;
+  }
+  .right-pointer {
+    color: green;
+    font-size: 32px;
+  }
+  .countdown {
+    color: green;
+    font-size: 32px;
+  }
+  .remaining {
+    color: green;
+    font-size: 32px;
+  }
+  .center-butts {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .start-butt {
+    color: green;
+    font-size: 32px;
+  }
+  .exit-butt {
+    color: green;
+    font-size: 32px;
+  }
+}
+
