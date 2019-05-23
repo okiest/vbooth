@@ -174,3 +174,66 @@ function flasher(){
   $(".flash").fadeOut(100);
 }
 
+unction sendPhoto(dataURL) {
+    var postDetails = {
+        'imgBase64': dataURL,
+    };
+    socket.send(JSON.stringify(postDetails))
+}
+
+function createStrip() {
+    console.log("Creating new strip.")
+    console.log(newStrip)
+    var postDetails = {
+        'new_strip': newStrip,
+    };
+    newStrip = false;
+    console.log(newStrip)
+    socket.send(JSON.stringify(postDetails))
+}
+
+function snapPhoto() {
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+    var dataURL = canvas.toDataURL();
+    var postDetails = {
+        'imgBase64': dataURL,
+    };
+    socket.send(JSON.stringify(postDetails))
+}
+
+function timer() {
+    console.log("numPhotos", numPhotos);
+    document.getElementById("remaining").innerHTML = "Photos Remaining: " + numPhotos;
+    if (numPhotos > 0) {
+        numPhotos -= 1
+        photoTimer(() => timer())
+    } else {
+        stripComplete();
+    }
+}
+
+function photoTimer() {
+    document.getElementById("countdown").innerHTML = "Next photo in " + timeleft;
+    timeleft -= 1;
+    if(timeleft <= -1){
+        document.getElementById("countdown").innerHTML = ""
+        flasher();
+        snapPhoto();
+        timeleft = 5;
+        timer()
+    } else {
+        var countAgain = setTimeout(function(){ photoTimer()}, 1000)
+    }
+}
+
+
+function stripComplete() {
+    var stripDone= true;
+    var postDetails = {
+        'strip_done': stripDone,
+    };
+    socket.send(JSON.stringify(postDetails))
+}
+
