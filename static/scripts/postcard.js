@@ -96,6 +96,7 @@ function startCamera() {
     elements[i].style.visibility='visible';
   }
   document.querySelector('#camera-butt').style.visibility='hidden'; 
+  setTimeout(fullscreen(), 500);
   //canvas.style.objectFit = "contain";
 }
 
