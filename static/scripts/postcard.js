@@ -1,13 +1,58 @@
+//GUI and Camera Variables
 const video = document.querySelector('.player');
 const canvas = document.querySelector('canvas');
 const dummy = document.querySelector('.canvas-dummy');
 const strip = document.querySelector('.strip');
 const gui = document.getElementsByClassName('.gui');
-//const snap = document.querySelector('.snap');
 var newHeight = window.outerHeight
 var newWidth = window.outerWidth
 dummy.style.width = newWidth;
 dummy.style.height = newHeight;
+
+
+//Booth Variables
+var timeleft = 5;
+var numPhotos = 4;
+var newStrip = true;
+var flash = document.getElementById("flash");
+
+
+//Socket Stuff
+console.log(window.location)
+var loc = window.location
+var wsStart = 'ws://'
+if (loc.protocol == 'https:'){
+    wsStart = 'wss://'
+}
+var endpoint = wsStart + loc.host + loc.pathname
+var socket = new ReconnectingWebSocket(endpoint);
+
+socket.onmessage = function(event){
+    console.log("message", event)
+    var msg = JSON.parse(event.data)
+    if ("newURL" in msg){
+        var myRedirect = msg["newURL"]
+        window.location = myRedirect
+    }
+}
+
+socket.onopen = function(e){
+    console.log("open", e)
+    $('.server-status').css({ 'color': 'green', });
+
+}
+
+socket.onerror = function(e){
+    console.log("error", e)
+}
+
+socket.onclose = function(e){
+    console.log("close", e)
+    $('.server-status').css({ 'color': 'red', });
+}
+
+
+
 
 const constraints = {
   audio: false,
