@@ -164,3 +164,13 @@ window.addEventListener("orientationchange", function() {
         var newWidth = window.outerWidth
         fullscreen();
 }, false);
+
+//Booth Functions
+
+function flasher(){
+  console.log("Flashy flashy!")
+  $(".flash").hide().fadeIn(100);
+  flash.style.opacity = "1";
+  $(".flash").fadeOut(100);
+}
+
