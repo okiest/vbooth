@@ -2,6 +2,7 @@ const video = document.querySelector('.player');
 const canvas = document.querySelector('canvas');
 const dummy = document.querySelector('.canvas-dummy');
 const strip = document.querySelector('.strip');
+const gui = document.getElementsByClassName('.gui');
 //const snap = document.querySelector('.snap');
 var newHeight = window.outerHeight
 var newWidth = window.outerWidth
@@ -90,6 +91,11 @@ function startCamera() {
   var newWidth = window.outerWidth
   canvas.width = newWidth;
   canvas.height = newHeight;
+  var elements = document.getElementsByClassName('gui');
+  for(var i=0; i<elements.length; i++) { 
+    elements[i].style.visibility='visible';
+  }
+  document.querySelector('#camera-butt').style.visibility='hidden'; 
   //canvas.style.objectFit = "contain";
 }
 
