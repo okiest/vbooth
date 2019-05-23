@@ -174,7 +174,7 @@ function flasher(){
   $(".flash").fadeOut(100);
 }
 
-unction sendPhoto(dataURL) {
+function sendPhoto(dataURL) {
     var postDetails = {
         'imgBase64': dataURL,
     };
