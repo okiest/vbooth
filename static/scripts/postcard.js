@@ -12,7 +12,7 @@ dummy.style.height = newHeight;
 
 //Booth Variables
 var timeleft = 5;
-var numPhotos = 4;
+var numPhotos = 1;
 var newStrip = true;
 var flash = document.getElementById("flash");
 
