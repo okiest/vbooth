@@ -16,7 +16,7 @@ application = ProtocolTypeRouter({
                 [
                     url(r"^alpha/$", FahkeekConsumer),
                     path('', FahkeekConsumer),
-                    path('/postcard/', BoothConsumer),
+                    path('postcard/', BoothConsumer),
                 ]
             )
         )
