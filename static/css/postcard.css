@@ -18,7 +18,7 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 .server-status {
-  background-color: red;
+  color: red;
 }
 .gui {
   visibility: hidden;
