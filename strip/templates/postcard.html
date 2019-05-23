@@ -7,25 +7,27 @@
 
 <div class="canvas-dummy">
   <!--<img class="img-overlay" src="/media/greetings_from.png" />-->
-  <div class="top-left">
+  <div class="top-mid-butts">
+  <button id="camera-butt" onClick="startCamera()">Load Camera</button>
+  </div>
+  <div class="top-left gui">
     <button id="exit-full" onClick="exitFull()" class="exit-butt">X</button>
   </div>
-  <div class="hud">
+  <div class="hud gui">
   <div class="remaining">1</div>
   <div class="countdown">5</div>
   </div>
-  <div class="left-butts">
+  <div class="left-butts gui">
   <div class="left-pointer"><</div>
   </div>
-  <div class="center-butts">
+  <div class="center-butts gui">
   <button id="fullscreen" onClick="fullscreen()" class="start-butt">Fuck</button>
   </div>
-  <div class="right-butts">
+  <div class="right-butts gui">
   <div class="right-pointer">></div>
   </div>
   <canvas class="canvas"></canvas>
 </div>
-<button id="camerabutt" onClick="startCamera()">Start</button>
 <video class="player"></video>
 <div class="strip"></div> 
 
