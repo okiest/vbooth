@@ -17,6 +17,9 @@
   grid-template-rows: 50vh 50vh;
   grid-template-columns: 1fr 1fr 1fr;
 }
+.server-status {
+  background-color: red;
+}
 .gui {
   visibility: hidden;
 }
