@@ -6,7 +6,7 @@ from channels.security.websocket import AllowedHostsOriginValidator, OriginValid
 
 #from order.consumers import ReceiveOrderConsumer
 #from yearend.consumers import YearendConsumer
-from strip.consumers import FahkeekConsumer
+from strip.consumers import FahkeekConsumer, BoothConsumer
 
 application = ProtocolTypeRouter({
     # Empty for now (http->django views is added by default)
@@ -16,6 +16,7 @@ application = ProtocolTypeRouter({
                 [
                     url(r"^alpha/$", FahkeekConsumer),
                     path('', FahkeekConsumer),
+                    path('/postcard/', BoothConsumer),
                 ]
             )
         )
