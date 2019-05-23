@@ -17,6 +17,22 @@
   grid-template-rows: 50vh 50vh;
   grid-template-columns: 1fr 1fr 1fr;
 }
+.gui {
+  visibility: hidden;
+}
+.top-mid-butts {
+  grid-row: 1/2;
+  grid-column: 2/3;
+  z-index: 4;
+  padding: 20px;
+  align-self: center;
+  justify-self: center;
+}
+#camera-butt {
+  color: red;
+  font-size: 64px;
+  visibility; visible;
+}
 .top-left {
   grid-row: 1/2;
   grid-column: 1/2;
