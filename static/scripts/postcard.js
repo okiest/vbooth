@@ -14,7 +14,7 @@ dummy.style.height = newHeight;
 var timeleft = 5;
 var numPhotos = 1;
 var newStrip = true;
-var flash = document.getElementById("flash");
+var flash = document.getElementById("#flash");
 
 
 //Socket Stuff
@@ -84,14 +84,14 @@ function paintToCanvas() {
   //canvas.height = video.videoHeight;
   canvas.width = dummy.offsetWidth;
   canvas.height = dummy.offsetHeight;
-  console.log("Video width: " + video.videoWidth);
-  console.log("Video height: " + video.videoHeight);
-  console.log("screen width: " + newWidth);
-  console.log("screen height: " + newHeight);
-  console.log("canvas width: " + canvas.width);
-  console.log("canvas height: " + canvas.height);
-  console.log("dummy width: " + dummy.offsetWidth);
-  console.log("dummy height: " + dummy.offsetHeight);
+  //console.log("Video width: " + video.videoWidth);
+  //console.log("Video height: " + video.videoHeight);
+  //console.log("screen width: " + newWidth);
+  //console.log("screen height: " + newHeight);
+  //console.log("canvas width: " + canvas.width);
+  //console.log("canvas height: " + canvas.height);
+  //console.log("dummy width: " + dummy.offsetWidth);
+  //console.log("dummy height: " + dummy.offsetHeight);
   //var vRatio = (canvas.height / video.videoHeight) * video.videoWidth;
   //console.log(vRatio);
   const context = canvas.getContext('2d');
@@ -170,7 +170,6 @@ window.addEventListener("orientationchange", function() {
 function flasher(){
   console.log("Flashy flashy!")
   $(".flash").hide().fadeIn(100);
-  flash.style.opacity = "1";
   $(".flash").fadeOut(100);
 }
 
@@ -236,4 +235,11 @@ function stripComplete() {
     };
     socket.send(JSON.stringify(postDetails))
 }
+
+function startCountdown() {
+    if (newStrip === true) {
+        createStrip();
+    }
+    timer();
+};
 
