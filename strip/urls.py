@@ -9,4 +9,5 @@ urlpatterns = [
     path('lobby/<strip_code>', lobby, name='lobby'),
     path('printed/<strip_code>', printed_strip, name='printed-strip'),
     path('postcard/', postcard, name='postcard'),
+    path('postcard/lobby/<strip_code>', postcard_lobby, name='postcard-lobby'),
 ]

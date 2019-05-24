@@ -54,3 +54,12 @@ def postcard(request):
     }
     return render(request, "postcard.html", context)
     
+@login_required
+def postcard_lobby(request, strip_code):
+    strip = PhotoStrip.objects.get(strip_code=strip_code)
+    photos = Photo.objects.filter(photo_strip=strip)
+    context = {
+        "strip": strip,
+        "photos": photos,
+    }
+    return render(request, "lobby.html", context)
