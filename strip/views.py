@@ -62,4 +62,4 @@ def postcard_lobby(request, strip_code):
         "strip": strip,
         "photos": photos,
     }
-    return render(request, "lobby.html", context)
+    return render(request, "postcard_lobby.html", context)
