@@ -99,10 +99,15 @@ function paintToCanvas() {
   return setInterval(() => {
     //context.drawImage(video, 0, 0, canvas.width, canvas.height);
     //context.drawImage(video, 0, 0, newWidth, newHeight);
-    context.drawImage(video, 0, 0, dummy.offsetWidth, dummy.offsetHeight);
     //context.drawImage(video, 0, 0,);
     //context.drawImage(video, 0, 0, vRatio, newHeight);
     //context.drawImage(video, 0, 0, 0, 0, 0, 0, newWidth, newHeight);
+    context.drawImage(video, 0, 0, dummy.offsetWidth, dummy.offsetHeight);
+    let pixels = context.getImageData(0, 0, dummy.offsetWidth, dummy.offsetHeight);
+    //pixels = redEffect(pixels);
+    pixels = rgbSplit(pixels);
+    context.globalAlpha = 0.3;
+    context.putImageData(pixels, 0, 0)
   }, 16);
 
 }
@@ -243,3 +248,22 @@ function startCountdown() {
     timer();
 };
 
+//Filters
+
+function redEffect(pixels) {
+  for(let i = 0; i < pixels.data.length; i+=4) {
+    pixels.data[i + 0] = pixels.data[i + 0] - 100;
+    pixels.data[i + 1] = pixels.data[i + 1] - 50;
+    pixels.data[i + 2] = pixels.data[i + 2] * 0.5;
+  }
+  return pixels;
+}
+
+function rgbSplit(pixels) {
+  for(let i = 0; i < pixels.data.length; i+=4) {
+    pixels.data[i + 50] = pixels.data[i + 0];
+    pixels.data[i + 100] = pixels.data[i + 1];
+    pixels.data[i - 50] = pixels.data[i + 2];
+  }
+  return pixels;
+}
