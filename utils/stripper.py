@@ -5,11 +5,20 @@ except ImportError:
     from io import BytesIO
 import base64
 from PIL import Image, ImageDraw, ImageFont
+from PIL import ImageChops
 
 from django.core.files.uploadedfile import InMemoryUploadedFile 
 
 
 from strip.models import *
+
+def get_four_square():
+    im1_pos = (60, 60, 1980, 1140)
+    im2_pos = (2100, 60, 4020, 1140)
+    im3_pos = (60, 1260, 1980, 2340)
+    im4_pos = (2100, 1260, 4020, 2340)
+    positions = [im1_pos, im2_pos, im3_pos, im4_pos]
+    return positions
 
 def get_coorder(orientation):
     print(orientation)
@@ -96,3 +105,49 @@ def big_stripper(strip_code, *args, **kwargs):
     photo_strip.strip_whole.save("print-{}.jpg".format(strip_code), image_file)
     photo_strip.save()
 
+def four_square(strip_code, *args, **kwargs):
+    n = 0
+    photo_strip = PhotoStrip.objects.get(strip_code=strip_code)
+    if photo_strip.strip_half:
+        return("Print version already created at " + photo_strip.strip_half.url)
+    else:
+        pass
+    positions = get_four_square()
+    photos = Photo.objects.filter(photo_strip=photo_strip)
+    im = Image.open("four_square_background.jpg")
+    im = im.convert('RGB')
+    for photo in photos:
+        single_im = Image.open(photo.strip_image.path)
+        single_im = single_im.convert('RGB')
+        print(ImageChops.difference(im, single_im))
+        print(im.size, single_im.size)
+        im.paste(single_im, positions[n])
+        n = n + 1
+    im_io = BytesIO()
+    im.save(im_io, format='JPEG')
+    image_file = InMemoryUploadedFile(im_io, None, 'something.jpg', 'image/jpeg', im_io.__sizeof__(), None)
+    photo_strip.strip_half.save("dl-{}.jpg".format(strip_code), image_file)
+    photo_strip.save()
+    half_path = photo_strip.strip_half.path
+    return half_path
+
+def back_print(strip_code, *arg, **kwargs):
+    photo_strip = PhotoStrip.objects.get(strip_code=strip_code)
+    today = datetime.date.today()
+    if photo_strip.strip_whole:
+        return("Print version already created at " + photo_strip.strip_whole.url)
+    else:
+        pass
+    im = Image.open("back_print.jpeg")
+    im_io = BytesIO()
+    font = ImageFont.truetype("BebasNeue-Regular.ttf", 160)
+    printed_date = today.strftime("%d %b %Y")
+    strip_code = photo_strip.strip_code
+    d = ImageDraw.Draw(im)
+    d.text((440, 2260), strip_code, fill=(0,0,0), font=font) 
+    im.save(im_io, format='JPEG')
+    image_file = InMemoryUploadedFile(im_io, None, 'something.jpg', 'image/jpeg', im_io.__sizeof__(), None)
+    photo_strip.strip_whole.save("dl-{}.jpg".format(strip_code), image_file)
+    photo_strip.save()
+    whole_path = photo_strip.strip_whole.path
+    return whole_path 

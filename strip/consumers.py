@@ -132,7 +132,7 @@ class BoothConsumer(AsyncConsumer):
                 finished = False
             print("Finished: ", finished)
             if finished is True:
-                new_url = "/postcard/lobby/" + new_strip.strip_code
+                new_url = "/kiosk/lobby/" + new_strip.strip_code
                 photos = Photo.objects.filter(photo_strip=new_strip)
                 im = Image.open(photos[0].strip_image.path)
                 width, height = im.size

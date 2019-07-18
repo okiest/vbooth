@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+
+<div class="main-grid">
+
+<div class="canvas-dummy">
+  <div class="flash" id="flash"></div>
+  <!--<img class="img-overlay" src="/media/greetings_from.png" />-->
+  <div class="top-mid-butts">
+  <button id="camera-butt" onClick="startCamera()">Load Camera</button>
+  </div>
+  <div class="top-left gui">
+  </div>
+  <div class="hud gui">
+    <svg class="server-status" height="20" width="20">
+      <circle  cx="50" cy="50" r="40" stroke="none"  fill="white" />
+    </svg> 
+  <div id="remaining" class="remaining">1</div>
+  <div id="countdown" class="countdown">5</div>
+  </div>
+  <div class="left-butts gui">
+  <div class="left-pointer"><</div>
+  </div>
+  <div class="center-butts gui">
+  <button id="fullscreen" onClick="startCountdown()" class="start-butt">
+    {% include "svg/apeture.html" %}
+  </button>
+  </div>
+  <div class="right-butts gui">
+    <div class="right-pointer">></div>
+  </div>
+  <button id="exit-full" onClick="toggleFullScreen()" class="exit-butt gui">X</button>
+  <canvas class="canvas"></canvas>
+</div>
+<video class="player"></video>
+<div class="strip"></div> 
+
+
+</div>
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/kiosk.css' %}">
+<script src="{% static 'scripts/kiosk.js' %}"></script>
+
+{% endblock %}
