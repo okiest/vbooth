@@ -143,6 +143,9 @@ class BoothConsumer(AsyncConsumer):
                     pass
                 #single_stripper(new_strip.strip_code)
                 ## TODO Add poscard post processing
+                half_path = four_square(new_strip.strip_code)
+                whole_path = back_print(new_strip.strip_code)
+                make_printable(half_path, whole_path, strip_code=new_strip.strip_code)
                 myRedirect = {
                     'newURL': new_url,
                 }
