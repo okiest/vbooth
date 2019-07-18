@@ -15,10 +15,15 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 from strip.models import *
 
 def get_four_square():
-    im1_pos = (60, 60, 1980, 1140)
-    im2_pos = (2100, 60, 4020, 1140)
-    im3_pos = (60, 1260, 1980, 2340)
-    im4_pos = (2100, 1260, 4020, 2340)
+    #Original positions. Change these to calibrate your printer.
+    #im1_pos = (60, 60, 1980, 1140)
+    #im2_pos = (2100, 60, 4020, 1140)
+    #im3_pos = (60, 1260, 1980, 2340)
+    #im4_pos = (2100, 1260, 4020, 2340)
+    im1_pos = (80, 80, 2000, 1160)
+    im2_pos = (2080, 80, 4000, 1160)
+    im3_pos = (80, 1240, 2000, 2320)
+    im4_pos = (2080, 1240, 4000, 2320)
     positions = [im1_pos, im2_pos, im3_pos, im4_pos]
     return positions
 
