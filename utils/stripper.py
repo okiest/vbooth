@@ -1,4 +1,6 @@
 import datetime
+import subprocess
+
 try:
     from BytesIO import BytesIO
 except ImportError:
@@ -151,3 +153,9 @@ def back_print(strip_code, *arg, **kwargs):
     photo_strip.save()
     whole_path = photo_strip.strip_whole.path
     return whole_path 
+
+def make_printable(half_path, whole_path, strip_code, *args, **kwargs):
+    print_path = "/home/daniel/"
+    printable = print_path + "printable-" + strip_code + ".pdf"
+    subprocess.call(["convert", half_path, whole_path, half_path, whole_path, printable])
+    
