@@ -246,6 +246,7 @@ function startCountdown() {
     if (newStrip === true) {
         createStrip();
     }
+    document.getElementById("fullscreen").style.display= "none";
     timer();
 };
 
