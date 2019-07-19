@@ -1,0 +1,178 @@
+.fucker {
+  margin-left: 200px;
+  margin-right: 200px;
+  grid-auto-rows: 50px;
+}
+.lil-fucker {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+  .strip-code {
+    grid-column: 2/4;
+    grid-row: 1;
+}
+  .print-code {
+    padding: 20px;
+    background: grey;
+    font-size: 64px;
+    color: white;
+    border: 5px dotted #bbb;
+    border-radius: 15px; 
+}
+  .free-today {
+    color: purple;
+    margin: 0 auto;
+}
+  address {
+}
+  .company {
+    font-size: 28px;
+    font-weight: bold;
+}
+  img {
+    object-fit: cover;
+    width: 1fr;
+}
+  .imh {
+    width: 100%;
+    grid-column: 1/-1;
+    grid-row: 2;
+}
+  .imh > img {
+    height: 50vh;
+}
+  .spacer {
+    grid-column: 1/5;
+    grid-row: 2;
+    height: 10vh;
+}
+  .imv {
+    grid-column: 2/4;
+    grid-row: 3;
+    height: 40vh;
+    border-radius: 25px;
+    padding: 20px;
+    align-self: center;
+    justify-self: center;
+    align-content: end;
+    justify-content: center;
+    align-items: end;
+    justify-items: center;
+    text-align: center;
+    font-size: 45px;
+    color: white;
+    background: blue;
+}
+  .imv > img {
+    height: 80vh;
+}
+  .imh-1 {
+    grid-column: 1/2;
+    grid-row: 2;
+}
+  .imh-2 {
+    grid-column: 2/3;
+    grid-row: 2;
+}
+  .imh-3 {
+    grid-column: 3/4;
+    grid-row: 2;
+}
+  .imh-4 {
+    grid-column: 4/5;
+    grid-row: 2;
+}
+  .imv-1 {
+    grid-column: 1/2;
+    grid-row: 2/3;
+}
+  .imv-2 {
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+  .imv-3 {
+    grid-column: 1/2;
+    grid-row: 4/5;
+}
+  .imv-4 {
+    grid-column: 1/2;
+    grid-row: 5/6;
+}
+  .print-v{
+    grid-column: 2/3;
+    grid-row: 2/3;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+  .print-h{
+    grid-column: 1/2;
+    grid-row: 1;
+    padding: 25px;
+}
+  .top-button {
+    grid-column: 2/3;
+    grid-row: 1;
+    padding: 25px;
+}
+  .dl-v{
+    grid-column: 2/3;
+    grid-row: 3/4;
+    padding: 50px;
+}
+  .dl-h{
+    grid-column: 2/3;
+    grid-row: 1;
+    padding: 25px;
+}
+  .butt-print {
+  display: inline-block;
+  border: none;
+  margin: 10px;
+  text-decoration: none;
+  background: #0069ed;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 30px 64px;
+  width: 100%;
+  height: 100px;
+}
+  .directions {
+  display: inline-block;
+  border: none;
+  margin: 10px;
+  text-decoration: none;
+  background: #0069ed;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 30px 64px;
+  width: 100%;
+}
+  .butt-dl {
+  display: inline-block;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  background: rgba( 76,175,80,0.5);
+  color: #ffffff;
+  padding: 30px 64px;
+  width: 100%;
+}
+  .butt-retry {
+  display: inline-block;
+  border: none;
+  margin: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  background: rgba( 76,175,80,0.5);
+  color: #ffffff;
+  padding: 30px 64px;
+  width: 100%;
+  height: 100px;
+}
+@media (max-width: 1400px) {
+  .fucker {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+}
