@@ -5,37 +5,19 @@
 
 <div class="fucker" id="grid">
   <div class="lil-fucker">
-    <div class={% if strip.orientation == "H" %}"imv"{% elif strip.orientation == "V"%}"imh"{% endif %}>
-    {% for photo in photos %}
-    <img  src="{{ photo.strip_image.url }}"/>
-    {% endfor %}
-    </div>
-    <div class={% if strip.orientation == "H" %}"print-v"{% elif strip.orientation == "V"%}"print-h"{% endif %}>
-      <a href="/">
+      <a href="/kiosk/">
       <button class="butt-retry">Try Again</button>
       </a>
-      {% if strip.orientation == "H" %}
-      <a href="/printed/{{ strip.strip_code }}">
-      <button class="butt-print">Print For Free
-        <p>today only</p>
-      </button>
-      </a>
-    </div>
-    {% elif strip.orientation == "V"%}
-    </div>
-    <div class="top-button">
-      <a href="/printed/{{ strip.strip_code }}">
-      <button class="butt-print">Print For Free
-        <p>today only</p>
-      </button>
-      </a>
-    </div>
-    {% endif %}
+      <div class="spacer"></div>
+      <div class="imv">
+        <h2>Thank you!</h2>
+        <h2>Your photos will be ready shortly.</h2>
+      </div>
   </div>
 </div>
 
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/lobby.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/kiosk_lobby.css' %}">
 
 {% endblock %}
 
