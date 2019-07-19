@@ -107,14 +107,17 @@
   justify-self: end;
 }
 .left-pointer {
+  display: none;
   color: red;
   font-size: 64px;
 }
 .right-pointer {
+  display: none;
   color: red;
   font-size: 64px;
 }
 .exit-butt {
+  display: none;
   color: red;
   z-index: 4;
   font-size: 64px;
@@ -125,10 +128,12 @@
 }
 @media (max-width: 800px ) {
   .left-pointer {
+    display: none;
     color: green;
     font-size: 32px;
   }
   .right-pointer {
+    display: none;
     color: green;
     font-size: 32px;
   }
@@ -149,6 +154,7 @@
     font-size: 32px;
   }
   .exit-butt {
+    display: none;
     color: green;
     font-size: 32px;
   }
