@@ -160,7 +160,7 @@ def back_print(strip_code, *arg, **kwargs):
     return whole_path 
 
 def make_printable(half_path, whole_path, strip_code, *args, **kwargs):
-    print_path = "/home/daniel/vbooth/printable"
+    print_path = "/home/daniel/vbooth/media/printable/"
     printable = print_path + "printable-" + strip_code + ".pdf"
     subprocess.call(["convert", half_path, whole_path, half_path, whole_path, printable])
     
