@@ -85,11 +85,15 @@
   justify-self: end;
 }
 .remaining {
-  color: red;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
   font-size: 32px;
 }
 .countdown{
-  color: red;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
   font-size: 32px;
 }
 .left-butts {
@@ -140,11 +144,15 @@
     font-size: 32px;
   }
   .countdown {
-    color: green;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
     font-size: 16px;
   }
   .remaining {
-    color: green;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
     font-size: 16px;
   }
   .center-butts {
