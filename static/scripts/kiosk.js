@@ -268,3 +268,7 @@ function rgbSplit(pixels) {
   }
   return pixels;
 }
+
+
+
+startCamera()
