@@ -220,7 +220,7 @@ function timer() {
 }
 
 function photoTimer() {
-    document.getElementById("countdown").innerHTML = "Next photo in " + timeleft;
+    document.getElementById("countdown").innerHTML = "Countdown: " + timeleft;
     timeleft -= 1;
     if(timeleft <= -1){
         document.getElementById("countdown").innerHTML = ""
