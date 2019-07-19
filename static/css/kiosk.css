@@ -67,12 +67,14 @@
   justify-content: center;
 }
 .start-butt {
-  height: 100px;
-  width: 150px;
-  color: red;
   font-size: 64px;
-  background-color: transparent;
   border: none;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
 .hud {
   z-index: 4;
@@ -84,11 +86,11 @@
 }
 .remaining {
   color: red;
-  font-size: 64px;
+  font-size: 32px;
 }
 .countdown{
   color: red;
-  font-size: 64px;
+  font-size: 32px;
 }
 .left-butts {
   z-index: 4;
@@ -139,11 +141,11 @@
   }
   .countdown {
     color: green;
-    font-size: 32px;
+    font-size: 16px;
   }
   .remaining {
     color: green;
-    font-size: 32px;
+    font-size: 16px;
   }
   .center-butts {
     padding-right: 0px;
