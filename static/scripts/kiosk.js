@@ -104,7 +104,7 @@ function paintToCanvas() {
     //context.drawImage(video, 0, 0, 0, 0, 0, 0, newWidth, newHeight);
     context.drawImage(video, 0, 0, dummy.offsetWidth, dummy.offsetHeight);
     let pixels = context.getImageData(0, 0, dummy.offsetWidth, dummy.offsetHeight);
-    pixels = redEffect(pixels);
+    //pixels = redEffect(pixels);
     //pixels = rgbSplit(pixels);
     //pixels = pixelsJS.filterImgData(pixels, "solange_grey");
     //pixels = pixelsJS.filterImgData(pixels, "grime");
