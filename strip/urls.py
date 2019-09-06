@@ -12,4 +12,5 @@ urlpatterns = [
     path('postcard/lobby/<strip_code>', postcard_lobby, name='postcard-lobby'),
     path('kiosk/', kiosk, name='kiosk'),
     path('kiosk/lobby/<strip_code>', kiosk_lobby, name='kiosk-lobby'),
+    path('connected/', connected, name='connected'),
 ]

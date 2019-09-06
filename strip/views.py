@@ -79,3 +79,8 @@ def kiosk_lobby(request, strip_code):
         "photos": photos,
     }
     return render(request, "kiosk_lobby.html", context)
+
+def connected(request):
+    context = {
+    }
+    return render(request, "connected.html", context)
