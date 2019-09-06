@@ -1,6 +1,10 @@
 .main-grid {
   display: grid;
 }
+.responsive {
+  width: 100%;
+  height: auto;
+}
 
 .player {
   display: none;
