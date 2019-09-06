@@ -64,11 +64,13 @@ def postcard_lobby(request, strip_code):
     }
     return render(request, "postcard_lobby.html", context)
 
+@login_required
 def kiosk(request):
     context = {
     }
     return render(request, "kiosk.html", context)
 
+@login_required
 def kiosk_lobby(request, strip_code):
     strip = PhotoStrip.objects.get(strip_code=strip_code)
     photos = Photo.objects.filter(photo_strip=strip)
