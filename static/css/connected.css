@@ -1,0 +1,358 @@
+:root {
+  --bg-dark: #1D1F28;
+  --bg-mid: #282A36;
+  --bg-light: #414458;
+  --text-light: #FDFDFD;
+  --text-mid: #BEBEC1;
+  --one-light: #79E6F3;
+  --one-dark: #3FDCEE;
+  --two-light: #5ADECD;
+  --two-dark: #18E3C8;
+  --three-light: #C574DD;
+  --three-dark: #B043D1;
+  --four-light: #8897F4;
+  --four-dark: #556FFF;
+  --danger-light: #F37F97;
+  --danger-dark: #FF4971;
+  --warn-light: #F2A272;
+  --warn-dark: #FF8037;
+}
+.bg-dark {
+  background: var(--bg-dark);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+  color: var(--text-light);
+}
+.bg-mid {
+  background: var(--bg-mid);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+  color: var(--text-light);
+}
+.bg-light {
+  background: var(--bg-light);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+  color: var(--text-light);
+}
+.text-light {
+  background: var(--text-light);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+}
+.text-mid {
+  background: var(--text-mid);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+}
+.one-light {
+  background: var(--one-light);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+  color: var(--text-light);
+}
+.one-dark {
+  background: var(--one-dark);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+  color: var(--text-light);
+}
+.two-light {
+  background: var(--two-light);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+  color: var(--text-light);
+}
+.two-dark {
+  background: var(--two-dark);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+  color: var(--text-light);
+}
+.three-light {
+  background: var(--three-light);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+  color: var(--text-light);
+}
+.three-dark {
+  background: var(--three-dark);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+  color: var(--text-light);
+}
+.four-light {
+  background: var(--four-light);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+  color: var(--text-light);
+}
+.four-dark {
+  background: var(--four-dark);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+  color: var(--text-light);
+}
+.danger-light {
+  background: var(--danger-light);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+  color: var(--text-light);
+}
+.danger-dark {
+  background: var(--danger-dark);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+  color: var(--text-light);
+}
+.warn-light {
+  background: var(--warn-light);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+  color: var(--text-light);
+}
+.warn-dark {
+  background: var(--warn-dark);
+  padding: 10px;
+  height: 30px;
+  width: 300px;
+  width: 50%;
+  font-size: 30px;
+}
+
+body {
+  background-color: var(--bg-dark);
+}
+
+.main-grid {
+  display: grid;
+  grid-gap: 10px;
+}
+.responsive {
+  width: 100%;
+  height: auto;
+}
+
+.player {
+  display: none;
+}
+.canvas {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  grid-row: 1/-1;
+  grid-column: 1/-1;
+  z-index: 3;
+}
+.canvas-dummy {
+  display: grid;
+  grid-template-rows: 50vh 50vh;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.flash {
+  opacity: 1;
+  top:0;
+  left:0;
+  position: absolute;
+  width:100%;
+  height:100%;
+  z-index: 10;
+  display: none;
+  background-color:#fff;
+}
+.server-status {
+  z-index: 4;
+  color: red;
+}
+.gui {
+  visibility: hidden;
+}
+.top-mid-butts {
+  grid-row: 1/2;
+  grid-column: 2/3;
+  z-index: 4;
+  padding: 20px;
+  align-self: center;
+  justify-self: center;
+}
+#camera-butt {
+  color: red;
+  font-size: 64px;
+  visibility; visible;
+}
+.top-left {
+  grid-row: 1/2;
+  grid-column: 1/2;
+  padding: 20px;
+  z-index: 4;
+  align-self: start;
+  justify-self: start;
+}
+.center-butts {
+  z-index: 4;
+  padding: 60px;
+  grid-row: 2/3;
+  grid-column: 2/3;
+  align-self: end;
+  justify-self: center;
+  align-content: center;
+  justify-content: center;
+}
+.start-butt {
+  font-size: 64px;
+  border: none;
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+.hud {
+  z-index: 4;
+  padding: 20px;
+  grid-row: 1/2;
+  grid-column: 3/4;
+  align-self: center;
+  justify-self: end;
+}
+.remaining {
+  color: white;
+  /*background: rgba(0, 0, 0, 0.5);*/
+  background: var(--bg-mid); 
+  padding: 20px;
+  font-size: 32px;
+}
+.countdown{
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  font-size: 32px;
+}
+.left-butts {
+  z-index: 4;
+  padding: 20px;
+  grid-row: 2/3;
+  grid-column: 1/2;
+  align-self: center;
+  justify-self: start;
+}
+.right-butts {
+  z-index: 4;
+  padding: 20px;
+  grid-row: 2/3;
+  grid-column: 3/4;
+  align-self: center;
+  justify-self: end;
+}
+.left-pointer {
+  display: none;
+  color: red;
+  font-size: 64px;
+}
+.right-pointer {
+  display: none;
+  color: red;
+  font-size: 64px;
+}
+.exit-butt {
+  display: none;
+  color: red;
+  z-index: 4;
+  font-size: 64px;
+  grid-row: 2/3;
+  grid-column: 3/4;
+  align-self: end;
+  justify-self: end;
+}
+@media (max-width: 800px ) {
+  .left-pointer {
+    display: none;
+    color: green;
+    font-size: 32px;
+  }
+  .right-pointer {
+    display: none;
+    color: green;
+    font-size: 32px;
+  }
+  .countdown {
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    font-size: 16px;
+  }
+  .remaining {
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    font-size: 16px;
+  }
+  .center-butts {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+  .start-butt {
+    color: green;
+    font-size: 32px;
+  }
+  .exit-butt {
+    display: none;
+    color: green;
+    font-size: 32px;
+  }
+  #camera-butt {
+    color: green;
+    font-size: 32px;
+    visibility; visible;
+  }
+}
+
+
