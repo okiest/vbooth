@@ -210,7 +210,23 @@ function snapPhoto() {
 
 function timer() {
     console.log("numPhotos", numPhotos);
-    document.getElementById("remaining").innerHTML = "Photos Remaining: " + numPhotos;
+    //document.getElementById("remaining").innerHTML = "Photos Remaining: " + numPhotos;
+    if (numPhotos == 4 ) {
+        $("#p-one").removeClass("pics-left").addClass("pics-taken");
+        $("#p-one").addClass("tic");
+    }
+    if (numPhotos == 3 ) {
+        $("#p-two").removeClass("pics-left").addClass("pics-taken");
+        $("#p-two").addClass("tic");
+    }
+    if (numPhotos == 2 ) {
+        $("#p-three").removeClass("pics-left").addClass("pics-taken");
+        $("#p-three").addClass("tic");
+    }
+    if (numPhotos == 1 ) {
+        $("#p-four").removeClass("pics-left").addClass("pics-taken");
+        $("#p-four").addClass("tic");
+    }
     if (numPhotos > 0) {
         numPhotos -= 1
         photoTimer(() => timer())
@@ -221,6 +237,22 @@ function timer() {
 
 function photoTimer() {
     document.getElementById("countdown").innerHTML = "Countdown: " + timeleft;
+    if (numPhotos == 4 ) {
+        console.log("fuck 4")
+        $("#p-one").addClass("tic").removeClass("tic");
+    }
+    if (numPhotos == 3 ) {
+        console.log("fuck 3")
+        $("#p-two").addClass("tic").removeClass("tic");
+    }
+    if (numPhotos == 2 ) {
+        console.log("fuck 2")
+        $("#p-three").addClass("tic").removeClass("tic");
+    }
+    if (numPhotos == 1 ) {
+        console.log("fuck 1")
+        $("#p-four").addClass("tic").removeClass("tic");
+    }
     timeleft -= 1;
     if(timeleft <= -1){
         document.getElementById("countdown").innerHTML = ""

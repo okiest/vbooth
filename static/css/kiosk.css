@@ -17,9 +17,45 @@
   --warn-light: #F2A272;
   --warn-dark: #FF8037;
 }
+body {
+  background-color: var(--bg-dark);
+}
 
+.pics-left {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  padding: 5px;
+  background: var(--one-light);
+}
+.pics-taken {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  padding: 5px;
+  background: var(--three-dark);
+}
+@keyframes pulse {
+  from { 
+    width: 40px;
+    height: 40px;
+  }
+  to {
+    width: 20px;
+    height: 20px;
+  }
+}
+.tic {
+  animation-name: pulse;
+  animation-duration: 1s;
+  animation-delay: 0s;
+  animation-iteration-count: 5;
+}
 .main-grid {
   display: grid;
+  grid-gap: 10px;
 }
 .responsive {
   width: 100%;
@@ -38,6 +74,7 @@
 }
 .canvas-dummy {
   display: grid;
+  border: 20px;
   grid-template-rows: 50vh 50vh;
   grid-template-columns: 1fr 1fr 1fr;
 }
@@ -93,7 +130,7 @@
 .start-butt {
   font-size: 64px;
   border: none;
-  background-color: #4CAF50; /* Green */
+  background-color: var(--three-dark); 
   color: white;
   padding: 15px 32px;
   text-align: center;
@@ -110,13 +147,14 @@
 }
 .remaining {
   color: white;
-  background: rgba(0, 0, 0, 0.5);
+  /*background: rgba(0, 0, 0, 0.5);*/
+  background: var(--bg-mid); 
   padding: 20px;
   font-size: 32px;
 }
 .countdown{
   color: white;
-  background: rgba(0, 0, 0, 0.5);
+  background: var(--bg-mid); 
   padding: 20px;
   font-size: 32px;
 }
