@@ -15,6 +15,7 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 from strip.models import *
 
 def get_four_square():
+    #Positions of photos for the four square template
     #Original positions. Change these to calibrate your printer.
     #im1_pos = (60, 60, 1980, 1140)
     #im2_pos = (2100, 60, 4020, 1140)
@@ -115,14 +116,19 @@ def big_stripper(strip_code, *args, **kwargs):
 def four_square(strip_code, *args, **kwargs):
     n = 0
     photo_strip = PhotoStrip.objects.get(strip_code=strip_code)
+    #Check if strip already exists
     if photo_strip.strip_half:
         return("Print version already created at " + photo_strip.strip_half.url)
     else:
         pass
+    #Get Positions for photos
     positions = get_four_square()
+    #Get photos associated with strip
     photos = Photo.objects.filter(photo_strip=photo_strip)
+    #Open background template and convert to RGB to match photos from webcam
     im = Image.open("four_square_background.jpg")
     im = im.convert('RGB')
+    #Place photos on background
     for photo in photos:
         single_im = Image.open(photo.strip_image.path)
         single_im = single_im.convert('RGB')
@@ -141,12 +147,15 @@ def four_square(strip_code, *args, **kwargs):
 def back_print(strip_code, *arg, **kwargs):
     photo_strip = PhotoStrip.objects.get(strip_code=strip_code)
     today = datetime.date.today()
+    #Check to see if it already exists
     if photo_strip.strip_whole:
         return("Print version already created at " + photo_strip.strip_whole.url)
     else:
         pass
+    #Open back print template
     im = Image.open("back_print.jpeg")
     im_io = BytesIO()
+    ### Add strip code to back print ###
     font = ImageFont.truetype("BebasNeue-Regular.ttf", 160)
     printed_date = today.strftime("%d %b %Y")
     strip_code = photo_strip.strip_code
@@ -162,5 +171,6 @@ def back_print(strip_code, *arg, **kwargs):
 def make_printable(half_path, whole_path, strip_code, *args, **kwargs):
     print_path = "/home/daniel/vbooth/media/printable/"
     printable = print_path + "printable-" + strip_code + ".pdf"
+    ### Call linux command to create pdf ###
     subprocess.call(["convert", half_path, whole_path, half_path, whole_path, printable])
     
