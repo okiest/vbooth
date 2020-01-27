@@ -21,10 +21,18 @@ def get_four_square():
     #im2_pos = (2100, 60, 4020, 1140)
     #im3_pos = (60, 1260, 1980, 2340)
     #im4_pos = (2100, 1260, 4020, 2340)
-    im1_pos = (80, 80, 2000, 1160)
-    im2_pos = (2080, 80, 4000, 1160)
-    im3_pos = (80, 1240, 2000, 2320)
-    im4_pos = (2080, 1240, 4000, 2320)
+
+    #4080 x 2720 (Large File size that Jams the Printer)
+    #im1_pos = (80, 80, 2000, 1160)
+    #im2_pos = (2080, 80, 4000, 1160)
+    #im3_pos = (80, 1240, 2000, 2320)
+    #im4_pos = (2080, 1240, 4000, 2320)
+
+    #1600 x 1200 Positions
+    im1_pos = (35, 35, 882, 511)
+    im2_pos = (917, 35, 1764, 511)
+    im3_pos = (35, 547,882, 1023)
+    im4_pos = (917, 547, 1764, 1023)
     positions = [im1_pos, im2_pos, im3_pos, im4_pos]
     return positions
 
